@@ -1,0 +1,85 @@
+codein_ibexa_seo_toolkit:
+    system:
+        default:
+            analysis:
+                content_types:
+                    blogpost:
+                        richtext_fields:
+                            - body # Example: description
+                    alanding: ~
+                    article:
+                        richtext_fields:
+                            - body # Example: description
+
+
+                    folder:
+                         richtext_fields:
+                             - body # Example: description
+                siteaccesses_blocklist: ['admin', 'admin_group']
+                blocklist: []
+            sitemap:
+                split_by:             "content_type" # One of "number_of_results"; "content_type", Example: number_of_results
+                # max_items_per_page: 5
+                # use_images: true
+                blocklist:
+                    locations:             []
+                    subtrees:             []
+                    content_type_identifiers: []
+                passlist:
+                    locations:             []
+                    subtrees:             []
+                    content_type_identifiers: []
+            robots:
+                sitemap_urls: ['http://localhost/sitemap.xml']
+                user_agents:
+                    "*":
+                        crawl_delay: 30
+                        disallow: ['/directory1/', '/directory2/', '/directory3/']
+                        allow: ['/directory2/subdirectory1/', '/directory2/subdirectory2/', '/directory2/subdirectory3/', '/directory2/subdirectory4/']
+                    "googlebot":
+                        crawl_delay: 60
+                        disallow: [ '/nogooglebot/' ]
+                        allow: [ '/nogooglebot/subdirectory1/', '/nogooglebot/subdirectory2/', '/nogooglebot/subdirectory3/', '/nogooglebot/subdirectory4/' ]
+
+                # If true, the admin can manually configure the robots list at the bo interface.
+                # NOT already implemented @TODO!
+                # allow_admin_configuration: false
+
+                # If true, prevent search engines from indexing.
+#                user_agents:
+#                    'kk':
+#                        disallow:             []
+
+            # Metas + Field type meta configuration.
+            metas:
+                default_metas:
+                    copyright:            Codein(c)
+                    author:               Ahmed EBEN HASSINE
+                field_type_metas:
+                    # Prototype
+                    title:
+                        label: 'Title'
+                        default_pattern: "<title|name>"
+                    meta_description:
+                        label: 'Meta Description'
+
+            links:
+
+                # Prototype
+                -
+                    attrs:                # Example: [ { key: rel, value: next }, { key: title, value: title ]
+
+                        # Prototype
+                        -
+                            key:                  ~
+                            value:                ~
+                    href:                 # Required
+                        # location_id: 2          # Example: 2
+                        asset:                # Example: /test/favicon.ico
+                            path: "/test/favicon" # Required
+                            package: "ezdesign"             # Example: ezdesign
+                        # route:                ~ # Example: main
+            hreflang:
+
+                # If true, hreflang link tags will be generated automatically according to the number of languages already configured.
+                enabled:              false
