@@ -36,8 +36,8 @@ class IbexaTestKernel extends \Ibexa\Contracts\Core\Test\IbexaTestKernel
 //
 //        yield new \EzSystems\EzPlatformContentFormsBundle\EzPlatformContentFormsBundle();
 //        yield new  \Ibexa\Platform\Bundle\Search\IbexaPlatformSearchBundle();
-//        yield new  \EzSystems\EzPlatformRestBundle\EzPlatformRestBundle();
-//        yield new   \Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle();
+       yield new  \EzSystems\EzPlatformRestBundle\EzPlatformRestBundle();
+       yield new   \Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle();
 //        yield new  \Symfony\WebpackEncoreBundle\WebpackEncoreBundle();
     }
 
