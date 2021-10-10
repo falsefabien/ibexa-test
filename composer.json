@@ -30,7 +30,7 @@
         "psalm/plugin-symfony": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.16",
         "friendsoftwig/twigcs": "^4.0",
-        "phpunit/phpunit": "8.0",
+        "phpunit/phpunit": "^8.0 | ^9.0",
         "friends-of-behat/mink-extension": "^2.5",
         "symfony/proxy-manager-bridge": "^5.3"
     },

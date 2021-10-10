@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 /**
@@ -38,6 +39,19 @@ class IbexaTestKernel extends \Ibexa\Contracts\Core\Test\IbexaTestKernel
 //        yield new  \EzSystems\EzPlatformRestBundle\EzPlatformRestBundle();
 //        yield new   \Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle();
 //        yield new  \Symfony\WebpackEncoreBundle\WebpackEncoreBundle();
+    }
+
+    protected function loadConfiguration(LoaderInterface $loader): void
+    {
+        parent::loadConfiguration($loader);
+
+        $loader->load(function (ContainerBuilder $container) {
+            $container->loadFromExtension('framework', [
+                'router' => [
+                    'resource' => __DIR__ . '/routing/router.yaml',
+                ],
+            ]);
+        });
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader): void

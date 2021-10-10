@@ -10,15 +10,15 @@ class ContentControllerTest extends WebTestCase
 
     protected function setUp(): void
     {
-        $this->client = $this->createClient();
+        $this->client = self::createClient();
 
         parent::setUp();
     }
 
     public function testMissingDadRequest()
     {
-
-     $response =    $this->client->request('post', '/api/ezp/v2/user/sessions', [], [], [
+        $this->client->catchExceptions(false);
+        $response = $this->client->request('post', '/api/ezp/v2/user/sessions', [], [], [
             'CONTENT_TYPE' => 'application/vnd.ez.api.SessionInput+json',
             'ACCEPT' => 'application/vnd.ez.api.Session+json',
         ], \json_encode(['SessionInput' => [
@@ -26,7 +26,7 @@ class ContentControllerTest extends WebTestCase
             'password' => 'publish',
         ]]));
 
-     dump($response);die;
+        self::assertResponseIsSuccessful();
     }
 
 }
